@@ -94,7 +94,20 @@ class TestCompany {
 		
 	} 
 	
-
+	//nuevo
+	
+	@Test
+	public void testSearchClientBinary() throws AlreadyExcistException {
+		setup1();
+		assertTrue(e1.searchClientBinary(c1.getId()).getId()==c1.getId());
+		assertTrue(e1.searchClientBinary(c1.getId()).getName()==c1.getName());
+		assertTrue(e1.searchClientBinary(c1.getId()).getAddress()==c1.getAddress());
+		assertTrue(e1.searchClientBinary(c1.getId()).getLastName()==c1.getLastName());
+		assertTrue(e1.searchClientBinary(c1.getId()).getTelephone()==c1.getTelephone());
+		assertTrue(e1.searchClientBinary(c1.getId()).getInasistencias()==c1.getInasistencias());
+		assertTrue(e1.searchClientBinary(c1.getId()).getTypeId()==c1.getTypeId());
+		assertTrue(e1.searchClientBinary(c1.getId()).getSuspendido()==c1.getSuspendido());
+	}
 	
 
 }
