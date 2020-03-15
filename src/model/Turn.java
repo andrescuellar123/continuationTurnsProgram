@@ -1,9 +1,12 @@
 package model;
 
 public class Turn {
+	
+	
+	
 	private int number;
 	private char letter;
-	
+	private TypeTurn type;
 
 	/**
 	 * @param number
@@ -13,6 +16,7 @@ public class Turn {
 		
 		this.number = number;
 		this.letter = letter;
+	
 	}
 	
 	
@@ -39,6 +43,17 @@ public class Turn {
 	public void setLetter(char letter) {
 		this.letter = letter;
 	}
+	
+
+	public TypeTurn getType() {
+		return type;
+	}
+
+
+
+	public void setType(TypeTurn type) {
+		this.type = type;
+	}
 
 
 
@@ -46,10 +61,10 @@ public class Turn {
 		String msg ="";
 		
 		if(number<=9) {
-			msg="the turn is: " + letter + 0 + number;
+			msg= letter +" "+ 0 + number;
 			}
 		else {
-			msg="the turn is: " + letter +  number;
+			msg=  letter + " " +number+"";
 		}
 
 		
@@ -71,10 +86,29 @@ public class Turn {
 			}
 		}
 		t1= new Turn(number2,letter2);
-		return msg=""+t1.getName();
+		t1.setLetter(letter2);
+		t1.setNumber(number2);
+		return t1.getName();
+	}
+	
+	
+
+	public TypeTurn addTypeTurn(String na , float time) {
+		TypeTurn t= new TypeTurn(na,time);
+	
+		return t;
 	}
 
 
+
+	@Override
+	public String toString() {
+		return "Turn [number=" + number + ", letter=" + letter + "]";
+	}
+	
+	public String otherToString() {
+		return "The Turn is:"+ getName() + " " + getType().getName() ;
+	}
 
 	
 

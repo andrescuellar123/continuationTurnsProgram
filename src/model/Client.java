@@ -1,6 +1,7 @@
 	package model;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class Client {
 	private ArrayList<Turn> clientTurn;
@@ -10,24 +11,52 @@ public class Client {
 	private String lastName;
 	private int telephone;
 	private String address;
-	/**
-	 * @param id
-	 * @param typeId
-	 * @param name
-	 * @param lastName
-	 * @param telephone
-	 * @param address
-	 */
-	public Client(int id, String typeId, String name, String lastName, int telephone, String address) {
-		super();
+	private int inasistencias;
+	private String suspendido;
+
+
+
+	public Client(int id, String typeId, String name, String lastName, int telephone,
+			String address, int inasistencias, String suspendido) {
+		clientTurn=new ArrayList<>();
 		this.id = id;
 		this.typeId = typeId;
 		this.name = name;
 		this.lastName = lastName;
 		this.telephone = telephone;
 		this.address = address;
-		clientTurn =new ArrayList<Turn>();
+		this.inasistencias = 0;
+		this.suspendido = suspendido;
 	}
+
+
+
+	public int getInasistencias() {
+		return inasistencias;
+	}
+
+
+
+	public void setInasistencias(int inasistencias) {
+		this.inasistencias = inasistencias;
+	}
+
+	
+
+
+
+	public String getSuspendido() {
+		return suspendido;
+	}
+
+
+
+	public void setSuspendido(String suspendido) {
+		this.suspendido = suspendido;
+	}
+
+
+
 	/**
 	 * @return the id
 	 */
@@ -120,6 +149,17 @@ public class Client {
 	public void addTurn(Turn t) {
 		clientTurn.add(t);
 	}
+
+
+
+
+
+
+
+
+	
+
+	 
 	
 	
 }
