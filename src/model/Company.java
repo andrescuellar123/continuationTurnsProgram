@@ -175,7 +175,7 @@ public class Company {
 	}
 	
 	public Client searchClientBinary(int id ) {
-		int max = clients.size();
+		int max = clients.size()-1;
 		int  min = 0;
 		int mid=0;
 		int pos=-1;

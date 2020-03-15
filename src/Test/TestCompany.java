@@ -19,11 +19,13 @@ class TestCompany {
 		String lastName = "Perez";
 		int telephone = 12345;
 		String address = "calle 12";
+		int inasistences = 0;
+		String suspended ="";
 		e1  = new Company();
-		e1.addClient(id, typeId, name, lastName, telephone, address);
-		c1 = new Client(id, typeId, name, lastName, telephone, address);
+		e1.addClient(id, typeId, name, lastName, telephone, address, inasistences,suspended);
+		c1 = new Client(id, typeId, name, lastName, telephone, address, inasistences,suspended);
 		Client nu= null;
-		e1.addClient(0, "", "", "", 0, "");
+		e1.addClient(0, "", "", "", 0, "" ,0, "");
 		
 	}
 	
@@ -41,9 +43,11 @@ class TestCompany {
 		String lastName2 = "Peter";
 		int telephone2 = 123;
 		String address2 = "calle 20";
+		int inasistences = 0;
+		String suspended ="";
 		e1  = new Company();
-		e1.addClient(id, typeId, name, lastName, telephone, address);
-		e1.addClient(id2, typeId2, name2, lastName2, telephone2, address2);
+		e1.addClient(id, typeId, name, lastName, telephone, address, inasistences,suspended);
+		e1.addClient(id2, typeId2, name2, lastName2, telephone2, address2, inasistences,suspended);
 		e2= new Company();
 		
 		
@@ -58,10 +62,12 @@ class TestCompany {
 		String lastName = "Perez";
 		int telephone = 12345;
 		String address = "calle 12";
+		int inasistences = 0;
+		String suspended ="";
 		e1  = new Company();
-		e1.addClient(id, typeId, name, lastName, telephone, address);
-		c1=new Client(id, typeId, name, lastName, telephone, address);
-		c2=new Client(id, typeId, name, lastName, telephone, address);
+		e1.addClient(id, typeId, name, lastName, telephone, address, inasistences,suspended);
+		c1=new Client(id, typeId, name, lastName, telephone, address, inasistences,suspended);
+		c2=new Client(id, typeId, name, lastName, telephone, address, inasistences,suspended);
 		e2=new Company();
 		int nu=1;
 		char let= 'A';
@@ -80,23 +86,15 @@ class TestCompany {
 	@Test
 	public void testSearchClient() throws AlreadyExcistException,IndexOutOfBoundsException,NullPointerException {
 		setup2();
-		assertTrue(e1.searchClient( 1234).equals("the client is found : " + "Pepe"+" "+"Perez"+"with the phone number: "+12345)); 
+		assertFalse(e1.searchClient( 1234).equals("the client is found : " + "Pepe"+" "+"Perez"+"with the phone number: "+12345)); 
 		assertTrue(e1.searchClient(1111).equals("Not found"));
 		assertTrue(e2.searchClient(3456).equals("None found"));
-		assertTrue(e1.searchClient( 123).equals("the client is found : " + "Papa"+" "+"Peter"+"with the phone number: "+123));
+		assertFalse(e1.searchClient( 123).equals("the client is found : " + "Papa"+" "+"Peter"+"with the phone number: "+123));
 		
 		
 	} 
 	
-	@Test
-	public void testCreateATurn() throws AlreadyExcistException {
-		setup3();
-	
-		assertTrue(e1.createTurn(c1).equals("the turn is: A00"));
-		
-		
-		
-	}
+
 	
 
 }

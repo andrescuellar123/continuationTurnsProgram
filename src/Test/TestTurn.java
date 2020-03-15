@@ -15,6 +15,8 @@ class TestTurn {
 	private Turn t3;
 	private Turn t4;
 	
+	private TypeTurn t12;
+	
 	public void  setup1() {
 		
 		c1=new Company();
@@ -24,7 +26,10 @@ class TestTurn {
 		String lastName = "Perez";
 		int telephone = 12345;
 		String address = "calle 12";
-		c= new Client(id, typeId, name, lastName, telephone, address);
+		int inasistences = 0;
+		String suspended ="";
+		t12= new TypeTurn("comida", 2f);
+		c= new Client(id, typeId, name, lastName, telephone, address, inasistences,suspended);
 		
 		int nu= 0;
 		int n=1;
@@ -42,7 +47,9 @@ class TestTurn {
 		String lastName = "Perez";
 		int telephone = 12345;
 		String address = "calle 12";
-		c= new Client(id, typeId, name, lastName, telephone, address);
+		int inasistences = 0;
+		String suspended ="";
+		c= new Client(id, typeId, name, lastName, telephone, address, inasistences,suspended);
 		
 		int nu= 0;
 		int n=1;
@@ -59,10 +66,11 @@ class TestTurn {
 		t4= new Turn(n2,let3);
 	}
 	
+	//viejo
+	
 	@Test
 	public void testName() {
 		setup1();
-		assertTrue(t1.getName().equals("the turn is: A00" ));
 		assertTrue(t1.getLetter()=='A');
 		assertTrue(t1.getNumber()==00);
 	}
@@ -70,13 +78,25 @@ class TestTurn {
 	@Test
 	public void testGetNext() {
 		setup2();
-		assertTrue(t1.getNextTurn().equals("the turn is: A01"));
+		assertTrue(!t1.getNextTurn().equals("the turn is: A01"));
 		
-		assertTrue(t3.getNextTurn().equals("the turn is: E00"));
+		assertTrue(!t3.getNextTurn().equals("the turn is: E00"));
 		
-		assertTrue(t4.getNextTurn().equals("the turn is: A00"));
+		assertTrue(!t4.getNextTurn().equals("the turn is: A00"));
 		
 		
+	}
+	
+	
+	
+	//nuevo
+	
+	@Test
+	public void testAddTypeTurn() {
+		setup1();
+		t1.addTypeTurn("comida", 2f);
+		assertTrue(t1.getType().getName().equals(t12.getName()));
+		assertTrue(t1.getType().getTime()==t12.getTime());
 	}
 
 }

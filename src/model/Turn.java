@@ -95,7 +95,7 @@ public class Turn {
 
 	public TypeTurn addTypeTurn(String na , float time) {
 		TypeTurn t= new TypeTurn(na,time);
-	
+		setType(t);
 		return t;
 	}
 
